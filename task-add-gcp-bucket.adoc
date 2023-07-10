@@ -1,0 +1,151 @@
+---
+sidebar: sidebar 
+permalink: task-add-gcp-bucket.html 
+keywords: google cloud storage buckets, google cloud storage, add buckets 
+summary: 在Canvas中提供Google Cloud Storage工作环境后、您可以直接从BlueXP添加其他存储分段。 
+---
+= 添加Google Cloud存储分段
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+在Canvas中提供Google Cloud Storage工作环境后、您可以直接从BlueXP添加其他存储分段。
+
+.步骤
+. 在"画布"中、双击Google Cloud Storage工作环境以查看Google Cloud Storage存储分段概述页面、然后单击*添加分段*。
++
+image:screenshot-add-gcp-bucket-button.png["显示Google Cloud Storage工作环境详细信息和添加存储分段按钮的屏幕截图。"]
+
++
+此时将显示_Add bucket_页面。
+
++
+image:screenshot-add-gcp-bucket.png["显示\"添加存储分段\"页面的屏幕截图、用于创建您自己的Google Cloud Storage分段。"]
+
+. 在_Project详细信息_部分中输入所需信息。
++
+[cols="25,75"]
+|===
+| 字段 | Description 
+
+
+| Bucket Name | 输入要用于存储分段的名称。 https://cloud.google.com/storage/docs/buckets#naming["有关命名要求、请参见Google Cloud文档"^]。 
+
+
+| Google项目  a| 
+选择要成为存储分段所有者的Google项目。该项目可以是部署连接器的主项目、也可以是其他项目。
+
+如果您在下拉列表中未看到任何其他项目、则表示您尚未将BlueXP服务帐户与其他项目关联。转到 Google Cloud 控制台，打开 IAM 服务，然后选择项目。将具有BlueXP角色的服务帐户添加到该项目中。您需要对每个项目重复此步骤。
+
+
+NOTE: 这是您为BlueXP设置的服务帐户、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-set-up-permissions-google.html#set-up-permissions-for-the-connector["如本页所述"^]。
+
+
+
+| 标签  a| 
+标签是指Google Cloud资源的元数据。创建存储分段时、最多可以添加10个标签键：值对。
+
+https://cloud.google.com/compute/docs/labeling-resources["有关标签的详细信息、请参见Google Cloud文档"^]。
+
+|===
+. 在_Location_部分中、选择要创建存储分段的位置类型和区域。您可以从三种不同类型的位置中进行选择。
++
+[cols="35,65"]
+|===
+| 如果您选择"位置类型"... | 然后选择... 
+
+
+| Region | "可用区域"字段中的单个区域。 
+
+
+| 双区域  a| 
+从"可用位置"字段选择地理位置(单个大陆)、然后在"可用区域"字段中选择两个区域。
+
+如果要在目标15分钟内为所有新写入的对象保证地区冗余、可以启用"Turbo复制"。
+
+
+
+| 多区域 | "可用多区域"字段中的地理多区域。 
+|===
++
+请注意、所有云存储数据在上传后即会在至少一个地理位置的至少两个分区之间实现冗余。 https://cloud.google.com/storage/docs/locations["有关存储分段位置的详细信息、请参见Google Cloud文档"^]。
+
+. 在_Storage class_部分中、选择要用于存储分段中的对象的存储类。您可以从四个存储类中进行选择、也可以选择_Autoclass_让Google根据需要调整此类。
++
+[cols="25,75"]
+|===
+| 存储类 | Description 
+
+
+| 标准 | 标准存储最适合经常访问的数据("热"数据)和/或只存储很短时间的数据。 
+
+
+| 近线 | 近线存储是一种低成本、高度耐用的存储服务、用于存储不常访问的数据。 
+
+
+| 冷线 | Cldline存储是一种极低成本、高度耐用的存储服务、用于存储不常访问的数据。 
+
+
+| 归档 | 归档存储是成本最低、高度耐用的存储服务、可用于数据归档、联机备份和灾难恢复。 
+
+
+| 自动分类 | Autoclass会根据每个对象的访问模式自动将存储分段中的对象过渡到相应的存储类。 
+|===
++
+每个存储类的成本和检索费用都不同。 https://cloud.google.com/storage/docs/storage-classes["有关存储类的详细信息、请参见Google Cloud文档"^]。
+
+. 在_Protectation_部分中、选择是要使用任何数据保护工具来保护存储分段中的对象、还是要使用任何数据加密配置来保护对数据的访问。
++
+[cols="25,75"]
+|===
+| 数据保护 | Description 
+
+
+| 无 | 默认情况下、存储分段上不会启用任何保护工具。 
+
+
+| 对象版本控制  a| 
+每当您更新、替换或删除实时对象版本时、存储分段都会保留非最新的对象版本、从而持续维护受保护的对象版本。选择"对象版本控制"时、可以指定两个选项：
+
+** *最大每个对象的版本数*-输入要创建的每个对象的非当前版本数。
+** *使非当前版本过期*-输入删除较旧的非当前对象之前经过的天数。
+
+
+
+
+| 保留策略  a| 
+保留策略可确保分段中当前和未来的所有对象在达到保留策略中定义的期限之前无法删除或替换。选择"保留策略"时、您可以指定两个选项：
+
+** *Retain objects for *-输入对象要保留的秒数、天数、月数或年数。
+** *时间范围*-选择时间是以秒、天、月还是年为单位。
+
+
+|===
++
+不能同时启用对象版本控制和保留策略保护工具。请参见的Google Cloud文档 https://cloud.google.com/storage/docs/object-versioning["有关对象版本控制的详细信息"^]，和 https://cloud.google.com/storage/docs/bucket-lock["有关保留策略的详细信息"^]。
+
++
+[cols="25,75"]
+|===
+| 数据加密 | Description 
+
+
+| Google管理的加密密钥 | 默认情况下、Google管理的加密密钥用于对数据进行加密。 
+
+
+| 客户管理的加密密钥(CMDK)  a| 
+您可以使用自己由客户管理的密钥进行数据加密、而不是使用默认的Google管理的加密密钥。如果您计划使用自己的客户管理密钥、则需要事先创建这些密钥、以便在此页面中选择密钥。
+
+键可以与存储分段位于同一个项目中、也可以选择其他项目。
+
+|===
++
+请参见的Google Cloud文档 https://cloud.google.com/storage/docs/encryption/default-keys["有关Google管理的加密密钥的详细信息"^]，和 https://cloud.google.com/storage/docs/encryption/customer-managed-keys["有关客户管理的加密密钥的详细信息"^]。
+
+. 单击*Add*(添加)，将创建存储分段。
+

@@ -1,0 +1,58 @@
+---
+sidebar: sidebar 
+permalink: task-change-gcp-bucket-settings.html 
+keywords: google cloud storage buckets, google cloud storage, edit buckets, change buckets 
+summary: 在Canvas中提供Google Cloud Storage工作环境后、您可以直接从BlueXP更改某些存储分段属性。 
+---
+= 更改Google Cloud Storage存储分段设置
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+在Canvas中提供Google Cloud Storage工作环境后、您可以直接从BlueXP更改某些存储分段属性。
+
+请注意、您不能更改存储分段名称、Google项目或保护设置。
+
+您可以更改的存储分段属性包括：
+
+* 存储分段中所有未来对象的存储类。
+* 您可以选择为存储分段中的对象添加、编辑和删除标注。
+* Turbo复制模式—仅当存储分段位于双区域位置时。
+
+
+您可以通过单击直接从BlueXP更改这些存储分段设置 image:button-horizontal-more.gif["\"三个点更多\"按钮"] >*编辑存储分段详细信息*。
+
+image:screenshot-edit-gcp-bucket.png["显示如何选择编辑存储分段详细信息按钮以编辑存储分段属性的屏幕截图。"]
+
+
+
+== 更改存储类
+
+使用存储类部分、您只能进行某些更改：
+
+* 如果在创建存储分段时选择了_Autoclass_、则可以禁用Autoclass并选择其他存储类。
+* 如果在创建存储分段时选择了任何其他存储类、则可以更改为除_Autoclass_之外的任何其他存储类。
+
+
+其他类中的对象将保留在该类中，但任何新对象都将使用新的类设置。
+
+
+
+== 为存储分段中的对象添加或更改标签
+
+标签是元数据、可用于对资源进行分组、以标识应用程序、环境、区域、云提供商等。标签由键和值组成。您可以向分段添加标注，以便在将对象添加到分段时将标注应用于对象。您还可以更改和删除标签和标签值。
+
+添加或编辑标签后，单击*Apply*保存所做的更改。如果要添加更多标签，请单击*添加新标签*。每个存储分段最多可以添加10个标签。
+
+
+
+== 更改是否在双区域位置启用Turbo复制
+
+如果存储分段位于双区域位置、则可以启用或禁用是否启用快速复制模式。通过"Turbo复制"、您可以保证在15分钟的目标时间内为所有新写入的对象提供地区冗余。
+
+创建存储分段后、无法更改任何其他位置详细信息。
