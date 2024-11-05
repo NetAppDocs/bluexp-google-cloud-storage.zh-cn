@@ -1,0 +1,9 @@
+= 可以通过BlueXP添加新存储分段并管理现有存储分段
+:allow-uri-read: 
+
+
+
+
+=== 可以通过BlueXP添加新存储分段并管理现有存储分段
+
+您可以在BlueXP Canvs上查看Google Cloud Storage存储分段已有很长一段时间了。现在、您可以直接从BlueXP  添加新存储分段并更改现有存储分段的属性。 https://docs.netapp.com/us-en/bluexp-google-cloud-storage/task-add-gcp-bucket.html["了解如何添加新的Google Cloud存储分段"](英文)。
